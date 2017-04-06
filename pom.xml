@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<groupId>co.com.bancodebogota.account_opening</groupId>
 	<artifactId>account_opening</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
@@ -9,72 +10,61 @@
 
 	<name>AccountOpening</name>
 	<description>Account Opening Project</description>
-	
-	<distributionManagement>
-		<repository>
-			<id>central</id>
-			<name>bancodebogota-releases</name>
-			<url>https://bancodebogota.jfrog.io/bancodebogota/maven-releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<name>bancodebogota-snapshots</name>
-			<url>https://bancodebogota.jfrog.io/bancodebogota/maven-releases</url>
-		</snapshotRepository>
-	</distributionManagement>
+
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.2.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-	</properties>
-
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.liquibase</groupId>
-			<artifactId>liquibase-core</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>3.4.1</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<!-- Replace with the version of the MySQL driver you want to use -->
+			<version>5.0.5</version>
+		</dependency>
+
+		<!-- Spring data JPA -->
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-data-jpa</artifactId> 
+			<exclusions> <exclusion> <groupId>org.apache.tomcat</groupId> <artifactId>tomcat-jdbc</artifactId> 
+			</exclusion> </exclusions> </dependency> Oracle JDBC driver <dependency> 
+			<groupId>com.oracle</groupId> <artifactId>ojdbc6</artifactId> <version>11.2.0</version> 
+			</dependency> HikariCP connection pool <dependency> <groupId>com.zaxxer</groupId> 
+			<artifactId>HikariCP</artifactId> <version>2.6.0</version> </dependency> -->
+
 	</dependencies>
-	
-	<scm>
-		<connection>scm:git:https://github.com/bancodebogota/account-oppening.git</connection>
-		<developerConnection>scm:git:git@github.com:bancodebogota/account-oppening.git</developerConnection>
-		<url>https://github.com/bancodebogota/account-oppening.git</url>
-		<tag>account_opening-0.0.1</tag>
-	</scm>
-	
+
+	<properties>
+		<maven.test.skip>true</maven.test.skip>
+		<java-version>1.8</java-version>
+	</properties>
+
 	<build>
 		<plugins>
+			<!-- Package as an executable jar/war -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -85,17 +75,21 @@
 			</plugin>
 
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.5.3</version>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>3.4.1</version>
 				<configuration>
-					<checkModificationExcludes>
-						<checkModificationExclude>pom.xml</checkModificationExclude>
-					</checkModificationExcludes>
+					<driver>mysql-connector-java</driver>
+					<url>jdbc:mysql://localhost:3306/mydb</url>
+					<username>root</username>
+					<password>abc123</password>
+					<changeLogFile>src/main/resources/db/changelog/db.changelog-master.yaml</changeLogFile>
 				</configuration>
 			</plugin>
-		
+
+
 		</plugins>
+
 	</build>
 
 </project>
