@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-identity-types
+      author: team
+      changes:
+      - createTable:
+          columns:
+          - column:
+              name: id
+              type: int
+              autoIncrement: true
+              constraints:
+                primaryKey: true
+                nullable: false
+          - column:
+              name: name
+              type: varchar(255)
+          tableName: identity_types
+  - changeSet:
+      id: insert-identity-types
+      author: team
+      changes:
+        - insert:
+            tableName: identity_types
+            columns:
+              - column:
+                  name: name
+                  value: Cédula de Ciudadanía

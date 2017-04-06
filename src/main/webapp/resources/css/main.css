@@ -1,0 +1,57 @@
+body {
+	background-image: url("../img/fondo_principal.png");
+	background-repeat: no-repeat;
+}
+
+.ajustarLogo {
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+/*CSS*/
+.trans-box {
+	/*background-color: #f5f5f5;*/
+	/*width: 80%;*/
+	height: 100%;
+	z-index: 1;
+	position: relative;
+	top: 30px;
+	/*left: 8%;
+	/*word-break:break-all;
+    /*opacity: 0.5;*/
+	background-repeat: no-repeat;
+	background: rgba(250, 249, 249, 0.7);
+}
+
+.text-banner {
+	font-size: 20px;
+}
+
+@media ( max-width : @screen-xs-max) {
+	...
+}
+
+@media ( min-width : @screen-sm-min) and (max-width: @screen-sm-max) {
+	...
+}
+
+@media ( min-width : @screen-md-min) and (max-width: @screen-md-max) {
+	...
+}
+
+@media ( min-width : @screen-lg-min) {
+	...
+}
+
+.bg-blue-bbta {
+	background-color: #002c76
+}
+
+#btn-empezar {
+  color: white;	
+  
+}
+
+button:hover {
+	color:white !important;
+}
