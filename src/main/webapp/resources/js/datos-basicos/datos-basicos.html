@@ -1,1 +1,49 @@
-<p>En construcci√≥n</p>
+<div ng-controller="DatosBasicosController as ctrl" layout-padding ng-cloak>
+<img src="resources/img/logoBanco.png" class="ajustarLogo"
+		alt="Banco de Bogota">
+
+<div class="row">
+<div class="col-xs-12 text-center"><h1>Ingresa datos Basicos</h1></div>
+<br/>
+<div class="col-xs-1 col-md-4"></div>
+<div class="col-xs-10 col-md-6">
+<form>
+  <div class="form-group">
+    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
+  </div>
+  <div class="form-group">
+    <select class="form-control" placeholder="Tipo Documento">
+	  <option>1</option>
+	  <option>2</option>
+	  <option>3</option>
+	  <option>4</option>
+	  <option>5</option>
+	</select>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="documento" placeholder="N˘mero Documento">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="nacimiento" placeholder="Lugar Nacimiento">
+  </div>
+  <div class="form-group">
+    <div layout-gt-xs="row">
+    <div flex-gt-xs>
+      <h4>Fecha nacimiento</h4>
+      <md-datepicker ng-model="myDate" md-placeholder="nacimiento" 
+          md-min-date="ctrl.minDate" md-max-date="ctrl.maxDate" md-open-on-focus></md-datepicker>
+    </div>
+  </div>
+  
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+ 
+
+</div>
+
+</div>
+

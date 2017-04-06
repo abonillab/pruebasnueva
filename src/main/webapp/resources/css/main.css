@@ -1,11 +1,21 @@
-body {
+/* body {
 	background-image: url("../img/fondo_principal.png");
 	background-repeat: no-repeat;
+} */
+#main {
+    position: relative;
+    background-image: url("../img/fondo_principal.png");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
 
 .ajustarLogo {
 	background-repeat: no-repeat;
 	background-size: contain;
+    min-width: 100%;
+    height: 80px;
 }
 
 /*CSS*/
@@ -27,20 +37,18 @@ body {
 	font-size: 20px;
 }
 
-@media ( max-width : @screen-xs-max) {
-	...
+@media screen and (max-width: 999px) and (min-width: 320px) {
+   #imgropa{
+      height: 200px;
+    }
 }
 
-@media ( min-width : @screen-sm-min) and (max-width: @screen-sm-max) {
-	...
-}
 
-@media ( min-width : @screen-md-min) and (max-width: @screen-md-max) {
-	...
-}
+@media screen and (max-width: 1800px) and (min-width: 1000px) {
+    #imgropa{
+       height: 450px;
 
-@media ( min-width : @screen-lg-min) {
-	...
+    }
 }
 
 .bg-blue-bbta {
@@ -54,4 +62,9 @@ body {
 
 button:hover {
 	color:white !important;
+}
+#myDatePicker .md-datepicker-input-container,
+#myDatePicker .md-datepicker-input-container input,
+#myDatePicker .md-datepicker-input-container button {
+	$( "input" ).prop( "disabled", true ); 
 }
